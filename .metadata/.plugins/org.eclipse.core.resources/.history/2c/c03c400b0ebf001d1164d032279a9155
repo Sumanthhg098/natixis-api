@@ -1,0 +1,6 @@
+package com.user.crud.model;
+
+@Entity
+public class User {
+
+}

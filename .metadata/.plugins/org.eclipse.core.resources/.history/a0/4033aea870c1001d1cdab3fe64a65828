@@ -1,0 +1,21 @@
+package junit.com.demo;
+
+import static org.junit.jupiter.api.Assertions.assertAll;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
+
+class TestCase {
+
+	@Test
+	void test() {
+		
+		Prime p = new Prime();
+		assertAll(
+				()->assertTrue(p.check(2)),
+				()->assertTrue(p.check(3)),
+				()->assertTrue(p.check(-13))
+		);
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.junit.natixis.model;
+
+public class Book {
+
+}

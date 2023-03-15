@@ -1,0 +1,33 @@
+package junit.com.demo;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
+class Math {
+
+	@Test
+	public void test() {
+		MathCalculator m = new MathCalculator();
+		int real = m.add(10, 20);
+		int actual = 30;
+		assertEquals(real, actual);
+	}
+	
+	@Test
+	public void test2() {
+		MathCalculator m = new MathCalculator();
+		int real = m.add(10, 20);
+		int actual = 40;
+		assertEquals(real, actual);
+	}
+	
+	@Test
+	public void test3() {
+		MathCalculator m = new MathCalculator();
+		int real = m.add(10, 20);
+		int actual = 40;
+		assertEquals(real, actual);
+	}
+
+}

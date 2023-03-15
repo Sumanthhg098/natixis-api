@@ -1,0 +1,17 @@
+package com.demo.crud.Repo;
+
+import java.util.Arrays;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
+import com.demo.crud.model.Student;
+
+@Service
+public class StudentRepo {
+	List<Student> stuList = Arrays.asList(
+			new Student(1,"Suraj",50,5000),
+			new Student(2,"tarurn",60,6000),
+			new Student(3,"Teja",50,2000),
+			new Student(4,"anil",100,2500));
+}

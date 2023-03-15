@@ -1,0 +1,68 @@
+package com.junit.natixis.controller;
+
+import java.util.List;
+import java.util.Optional;
+
+import javax.websocket.server.PathParam;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.junit.natixis.model.Book;
+import com.junit.natixis.service.BookService;
+
+@RestController
+@RequestMapping("/book")
+public class BookController {
+	@Autowired
+	private BookService bookService;
+	
+	//to fetch
+	@GetMapping("/all")
+	public List<Book> fetch()
+	{
+		return bookService.getAllData();
+	}
+	
+	//to fetch by id
+	@GetMapping("/single/{id}")
+	public Optional<Book> fetchId(@PathVariable int id)
+	{
+		return bookService.fetchById(id);
+	}
+	
+	@GetMapping("/find/{author}")
+	public Optional<Book> fetchId(@PathVariable String author)
+	{
+		return bookService.fetchByAuthor(author);
+	}
+	
+	//to add data
+	@PostMapping("/add")
+	public Book addNewBook(@RequestBody Book book)
+	{
+		return bookService.addNewRecord(book);
+	}
+	
+	//to update data
+	@PutMapping("/update/{id}")
+	public Book updateBook(@RequestBody Book book, @PathVariable int id)
+	{
+		return bookService.updateRecord(book, id);
+	}
+	
+	//to delete data
+	@DeleteMapping("/remove/{id}")
+	public String remove(@PathVariable int id)
+	{
+	   bookService.deleteRecords(id);
+	   return "deleted record";
+	}
+}

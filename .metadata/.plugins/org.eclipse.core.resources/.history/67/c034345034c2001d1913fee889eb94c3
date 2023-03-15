@@ -1,0 +1,42 @@
+package com.junit.natixis.service;
+
+import java.util.List;
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.junit.natixis.Repo.BookRepo;
+import com.junit.natixis.model.Book;
+
+@Service
+public class BookService {
+	@Autowired
+	private BookRepo bookRepo;
+	
+	public List<Book> getAllData(){
+		return bookRepo.findAll();
+	}
+	
+	public Book addNewRecord(Book book) {
+		return bookRepo.save(book);
+	}
+	
+	public Optional<Book> fetchById(int id) {
+		return bookRepo.findById(id);
+	}
+	
+	public Book updateRecord(Book book,int id) {
+		
+		Book b = bookRepo.findById(id).get();
+		if(b!=null) return bookRepo.save(book);
+		if(b==null) return new Book();
+	}
+	
+	public void deleteRecords(int id) {
+		
+		bookRepo.deleteById(id);
+	
+	}
+	
+}

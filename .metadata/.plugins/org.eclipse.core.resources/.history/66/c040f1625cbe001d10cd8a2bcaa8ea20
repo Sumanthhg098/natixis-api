@@ -1,0 +1,20 @@
+package com.pipe.crud.Controller;
+
+import java.util.List;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.pipe.crud.model.Employe;
+
+@RestController
+@CrossOrigin(origins="*")
+public class EmployeeController {
+	
+	@RequestMapping("/all")
+	public List<Employe> getValuesEmp()
+	{
+		return null;
+	}
+}

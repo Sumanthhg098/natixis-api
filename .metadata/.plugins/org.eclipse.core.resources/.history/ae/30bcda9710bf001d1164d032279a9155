@@ -1,0 +1,20 @@
+package com.user.crud.service;
+
+import java.util.Optional;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.user.crud.model.User;
+import com.user.crud.repo.UserRepo;
+
+@Service
+public class UserService {
+    @Autowired
+	private UserRepo userRepo;
+	public Optional<User> getPassword(String user) {
+		
+		return userRepo.findById(user);
+	}
+
+}

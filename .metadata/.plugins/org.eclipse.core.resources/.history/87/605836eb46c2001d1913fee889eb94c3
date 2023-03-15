@@ -1,0 +1,9 @@
+package com.junit.natixis.Repo;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import com.junit.natixis.model.Book;
+
+public interface BookRepo extends JpaRepository<Book, Integer>{
+	
+}

@@ -1,0 +1,26 @@
+package com.demo.crud.Service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.demo.crud.Repo.StudentRepo;
+import com.demo.crud.model.Student;
+
+@Service
+public class StudentService {
+
+	@Autowired
+	StudentRepo stuRepo;
+//	public List<Student> fetchAllStu() {
+//		// TODO Auto-generated method stub
+//		return stuRepo.getStudentList();
+//	}
+	
+	public Student fetchStu(int n) {
+	
+		return stuRepo.getStudent(n);
+	}
+
+}

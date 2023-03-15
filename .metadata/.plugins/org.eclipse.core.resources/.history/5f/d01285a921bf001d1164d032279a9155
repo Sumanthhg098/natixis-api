@@ -1,0 +1,27 @@
+package com.login.crud.Service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.login.crud.Repo.ModelRepo;
+import com.login.crud.model.Model;
+
+@Service
+public class ModelService {
+
+	@Autowired
+	private ModelRepo repo;
+	
+	public String getAns1(String user) {
+		List<Model> list = repo.findAll();
+		System.out.println(list);
+		for(Model x:list)
+		{
+			if(x.getName().equalsIgnoreCase(user)) return x.getPassword();
+		}
+		return null;
+	}
+
+}

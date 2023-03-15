@@ -1,0 +1,7 @@
+package junit.com.demo;
+
+public class Bank {
+	String name;
+	int balance;
+	
+}

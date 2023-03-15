@@ -1,0 +1,10 @@
+package junit.com.demo;
+
+public class Sorting {
+	
+	public int[] check(arr[])
+	{
+		int arr1[] = new int(arr.length());
+		return arr[];
+	}
+}

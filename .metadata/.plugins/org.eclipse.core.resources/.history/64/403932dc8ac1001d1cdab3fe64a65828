@@ -1,0 +1,14 @@
+package junit.com.demo;
+
+import java.util.Arrays;
+
+public class Sorting {
+	
+	public int[] check(int arr[])
+	{
+		Arrays.sort(arr);
+		return arr;
+	}
+	
+	
+}

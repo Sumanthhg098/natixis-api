@@ -1,0 +1,7 @@
+package com.user.crud.repo;
+
+import com.user.crud.model.User;
+
+public interface UserRepo extends JpaRepository<User string> {
+
+}

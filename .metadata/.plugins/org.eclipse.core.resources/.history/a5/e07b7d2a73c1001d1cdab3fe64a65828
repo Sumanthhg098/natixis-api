@@ -1,0 +1,9 @@
+package junit.com.demo;
+
+public class LimitExceededException extends Exception{
+	
+	public String getMessage()
+	{
+		return "Limit exceeds";
+	}
+}

@@ -1,0 +1,5 @@
+package com.pipe.crud.model;
+
+public class Employe {
+
+}

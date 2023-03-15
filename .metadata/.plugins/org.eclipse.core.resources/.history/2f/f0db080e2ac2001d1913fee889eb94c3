@@ -1,0 +1,5 @@
+package com.junit.natixis.controller;
+
+public class BookController {
+
+}

@@ -1,0 +1,26 @@
+package com.pipe.crud.Controller;
+
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.pipe.crud.model.Employe;
+
+@RestController
+@CrossOrigin(origins="*")
+public class EmployeeController {
+	
+	@RequestMapping("/all")
+	public List<Employe> getValuesEmp()
+	{
+		List<Employe> empList = Arrays.asList(
+				new Employe(101,"Sumanth","2000-11-10",25000,new Date()),
+				new Employe(102,"Madhu","2000-5-25",30000,new Date()),
+				new Employe(103,"Varun","1999-2-2",30000,new Date()));
+		return empList;
+	}
+}

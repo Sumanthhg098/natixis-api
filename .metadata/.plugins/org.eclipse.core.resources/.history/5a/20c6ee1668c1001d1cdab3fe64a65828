@@ -1,0 +1,10 @@
+package junit.com.demo;
+
+public class Prime {
+   public boolean check(int num) {
+	   if(num%2==0) {
+		   return true;
+	   }
+	   return false;
+   }
+}

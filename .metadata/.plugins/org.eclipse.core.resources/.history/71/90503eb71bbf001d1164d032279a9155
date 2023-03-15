@@ -1,0 +1,18 @@
+package com.login.crud.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.login.crud.Service.ModelService;
+
+@RestController
+public class ModelController {
+	
+	@Autowired
+	private ModelService service;
+	
+	public boolean getAns(String user,String pass)
+	{
+		return service.getAns1(user,pass);
+	}
+}

@@ -1,0 +1,87 @@
+package com.junit.natixis;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.List;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.test.context.jdbc.Sql;
+import org.springframework.web.client.RestTemplate;
+
+import com.junit.natixis.Repo.BookRepo;
+import com.junit.natixis.model.Book;
+
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT )
+class JunitIntegrationTestingDemoApplicationTests {
+
+	static RestTemplate restTemplate;
+	
+	@Autowired
+	BookRepo bookRepo;
+	
+	@LocalServerPort
+	int port;
+	
+	String baseURL ="http://localhost";
+	
+	@BeforeAll
+	static public void setUp() {
+		restTemplate = new RestTemplate();
+	}
+	
+	@BeforeEach
+	public void initSetUp()
+	{
+		baseURL = baseURL.concat(":").concat(""+port).concat("/book");
+	}
+	
+	
+	//checking for PostMapping
+	@Test
+	@Sql(statements="delete from book",executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+	public void checkForNewData()
+	{
+		Book b = new Book("c++","abhi",1265);
+		Book newBook = restTemplate.postForObject(baseURL+"/add", b, Book.class);
+		assertEquals("abhi", newBook.getAuthor());
+	}
+	
+	//checking for GetMapping
+	@Test
+	@Sql(statements="delete from book",executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql(statements="insert into book (id,name,author,price) values(123,'Alphabets','Vamsi',5000)",executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql(statements="delete from book",executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+	public void checkGet()
+	{
+		List<Book> l = restTemplate.getForObject(baseURL+"/all", List.class);
+		assertEquals(1, l.size());
+	}
+	
+	//checking for PutMapping
+	@Test
+	@Sql(statements="delete from book",executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql(statements="insert into book (id,name,author,price) values(123,'Alphabets','Vamsi',5000)",executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql(statements="delete from book",executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+	public void checkUpdate()
+	{
+		Book b = new Book(123,"c++","abhi",1265);
+		restTemplate.put(baseURL+"/update/123", b);
+		assertEquals("abhi", bookRepo.findById(123).get().getAuthor() );
+	}
+	
+	//checking for DeleteMapping
+	@Test
+	@Sql(statements="delete from book",executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql(statements="insert into book (id,name,author,price) values(123,'Alphabets','Vamsi',5000)",executionPhase = Sql.ExecutionPhase.BEFORE_TEST_METHOD)
+	@Sql(statements="delete from book",executionPhase = Sql.ExecutionPhase.AFTER_TEST_METHOD)
+	public void checkDelete()
+	{
+		restTemplate.delete(baseURL+"/remove/123");
+		assertEquals(0, bookRepo.count());
+	}
+}

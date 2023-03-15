@@ -1,0 +1,5 @@
+package com.user.crud.repo;
+
+public interface UserRepo {
+
+}

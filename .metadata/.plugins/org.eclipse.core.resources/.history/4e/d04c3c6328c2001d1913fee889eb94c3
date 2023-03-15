@@ -1,0 +1,5 @@
+package com.junit.natixis.Repo;
+
+public interface BookRepo {
+
+}

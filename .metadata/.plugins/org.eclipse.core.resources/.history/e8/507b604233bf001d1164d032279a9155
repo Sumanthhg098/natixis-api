@@ -1,0 +1,41 @@
+package com.login.crud.Service;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.login.crud.Repo.ModelRepo;
+import com.login.crud.model.Model;
+
+@Service
+public class ModelService {
+
+	@Autowired
+	private ModelRepo repo;
+	
+	public String getAns1(String user, String pass) {
+		List<Model> list = repo.findAll();
+		
+		for(Model x:list)
+		{
+			String name=" "+x.getName();
+			
+			if(name.equals(user)) 
+			{
+				String password=" "+x.getPassword();
+			
+				if(password.equals(pass)) return "true";
+			}
+;
+		}
+		return "false";
+	}
+
+	public void addNewData(String name, String pass) {
+		int id=1;
+		Model m = new Model(id,name,pass);
+		repo.save(m);
+	}
+
+}

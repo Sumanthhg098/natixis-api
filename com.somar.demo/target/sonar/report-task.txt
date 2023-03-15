@@ -1,0 +1,6 @@
+projectKey=sonalr-one-demo:com.somar.demo
+serverUrl=http://localhost:9000
+serverVersion=8.9.10.61524
+dashboardUrl=http://localhost:9000/dashboard?id=sonalr-one-demo%3Acom.somar.demo
+ceTaskId=AYahyElPQp4kZipSVFks
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AYahyElPQp4kZipSVFks

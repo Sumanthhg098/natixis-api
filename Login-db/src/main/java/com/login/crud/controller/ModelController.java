@@ -1,0 +1,33 @@
+package com.login.crud.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.login.crud.Service.ModelService;
+import com.login.crud.model.Model;
+
+@CrossOrigin(origins="*")
+@RestController
+public class ModelController {
+	
+	@Autowired
+	private ModelService service;
+	
+	@RequestMapping("/pass")
+	public String getAns(String email, String pass)
+	{
+		System.out.println(service.getAns1(email, pass));
+		return service.getAns1(email,pass);
+	}
+	
+	@PutMapping("/add")
+	public void addNew(@RequestBody Model model)
+	{
+		System.out.println(model);
+		service.addNewData(model);
+	}
+}

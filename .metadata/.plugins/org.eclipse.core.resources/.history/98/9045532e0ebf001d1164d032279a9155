@@ -1,0 +1,10 @@
+package com.user.crud.model;
+
+import javax.persistence.Entity;
+
+@Entity
+public class User {
+	@Id
+	String name;
+	String password;
+}

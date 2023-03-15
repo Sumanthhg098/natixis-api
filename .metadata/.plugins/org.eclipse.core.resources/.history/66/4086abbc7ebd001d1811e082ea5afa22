@@ -1,0 +1,5 @@
+package com.demo.crud.Repo;
+
+public class StudentRepo {
+
+}

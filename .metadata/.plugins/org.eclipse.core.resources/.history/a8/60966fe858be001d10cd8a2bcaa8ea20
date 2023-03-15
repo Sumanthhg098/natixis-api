@@ -1,0 +1,21 @@
+package com.pipe.crud.model;
+
+public class Employe {
+	private int empId;
+	private String empName;
+	private String empDOB;
+	private int empSalary;
+	public Employe() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Employe(int empId, String empName, String empDOB, int empSalary) {
+		super();
+		this.empId = empId;
+		this.empName = empName;
+		this.empDOB = empDOB;
+		this.empSalary = empSalary;
+	}
+	
+	
+}

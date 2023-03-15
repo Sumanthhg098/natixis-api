@@ -1,0 +1,5 @@
+package com.login.crud.Repo;
+
+public interface ModelRepo {
+
+}

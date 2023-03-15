@@ -1,0 +1,5 @@
+package com.user.crud.model;
+
+public class User {
+
+}

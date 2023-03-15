@@ -1,0 +1,22 @@
+package junit.com.demo;
+
+import java.util.Arrays;
+
+public class Sorting {
+	
+	public int[] check(int arr[])
+	{
+		int i =arr.length;
+		
+		
+		int arr1[] = new int[i];
+		for(int j=0;j<=i-1;j++)
+		{
+			arr1[j]=arr[i];
+		}
+		Arrays.sort(arr1);
+		return arr1;
+	}
+	
+	
+}

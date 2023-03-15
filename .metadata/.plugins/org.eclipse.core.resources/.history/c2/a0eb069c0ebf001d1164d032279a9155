@@ -1,0 +1,7 @@
+package com.employee.crud1.controller;
+
+@RestController
+public class UserController {
+
+	
+}
